@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Raghav 💙</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #cce7ff, #e6f2ff);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      max-width: 360px;
+      position: relative;
+    }
+
+    h1 {
+      color: #4da6ff;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #444;
+      font-size: 18px;
+    }
+
+    .buttons {
+      margin-top: 25px;
+      position: relative;
+      height: 70px;
+    }
+
+    button {
+      padding: 12px 22px;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      position: absolute;
+      transition: all 0.3s ease;
+    }
+
+    #yesBtn {
+      background-color: #4da6ff;
+      color: white;
+      left: 20%;
+    }
+
+    #noBtn {
+      background-color: #b3d9ff;
+      color: #003366;
+      right: 20%;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #4da6ff;
+      min-height: 50px;
+    }
+
+    .heart {
+      position: absolute;
+      color: #99ccff;
+      font-size: 20px;
+      animation: float 6s infinite ease-in;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0.5); }
+      100% { transform: translateY(-10vh) scale(1.2); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Raghav 💙</h1>
+    <p>I have something very important to ask you...</p>
+    <h2>Will you be my Valentine? 💌</h2>
+
+    <div class="buttons">
+      <button id="yesBtn">Yes 💙</button>
+      <button id="noBtn">No 🙈</button>
+    </div>
+
+    <div id="message"></div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const message = document.getElementById("message");
+
+    let noClickCount = 0;
+
+    noBtn.addEventListener("click", () => {
+      noClickCount++;
+
+      if (noClickCount === 1) {
+        message.innerText = "Are you really gonna click no? 🥺";
+        noBtn.style.transform = "scale(0.7)";
+      } 
+      else if (noClickCount === 2) {
+        message.innerText = "Sorry you don't get to choose no, you're stuck with me for this life 💍😌";
+        noBtn.style.display = "none";
+        yesBtn.style.left = "50%";
+        yesBtn.style.transform = "translateX(-50%) scale(1.2)";
+      }
+    });
+
+    yesBtn.addEventListener("click", () => {
+      message.innerText = "Yayyyyy I love you so muchhhh my forever wala valentine 💙🥹";
+      yesBtn.style.transform = "scale(1.2)";
+      noBtn.style.display = "none";
+    });
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💙";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 600);
+  </script>
+
+</body>
+</html>
